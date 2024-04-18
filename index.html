@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Podcast Productions</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+ 
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+ 
+        @keyframes scroll {
+            0% {
+                left: 100%;
+            }
+ 
+            100% {
+                left: -100%;
+            }
+        }
+ 
+        .marquee {
+            position: relative;
+            white-space: nowrap;
+            animation: scroll 30s linear infinite;
+        }
+ 
+        .podcast {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+ 
+        .podcast a {
+            color: white;
+            /* Ensures text color is white */
+            text-decoration: none;
+            /* No underline */
+            display: block;
+            /* Makes the link fill the div */
+        }
+ 
+        .podcast:hover {
+            transform: scale(1.05);
+            /* Scales up the div slightly on hover */
+            cursor: pointer;
+        }
+ 
+        .podcast h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+ 
+        .podcast p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div>
+        <h1>Dark</h1>
+        <div class="marquee">
+            <div class="podcast">
+                <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3">
+                    <h2>Fabulas De Machina</h2>
+                    <p>Date: November 1, 2020</p>
+                    <p>Audience Size: 10,237</p>
+                    <p>Total Streams: 1,324,141</p>
+                </a>
+            </div>
+            <div class="podcast">
+                <a href="https://darkpodcasting.com">
+                    <h2>Smelter: A tale of blood <br>and silicon</h2>
+                    <p>Date: ?, 2024</p>
+                    <p>Audience Size: ?</p>
+                    <p>Total Streams: ?</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>
