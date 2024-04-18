@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
- 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark Podcast Productions</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
@@ -18,29 +20,36 @@
             height: 100vh;
             overflow: hidden;
         }
- 
+
         h1 {
             font-size: 48px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
- 
+
+        .subheader {
+            font-family: 'Jersey 10 Charted', sans-serif;
+            font-size: 24px;
+            text-align: center;
+            color: #cfcfcf; /* Light gray color for subheader text */
+            margin-bottom: 20px;
+        }
+
         @keyframes scroll {
             0% {
                 left: 100%;
             }
- 
             100% {
                 left: -100%;
             }
         }
- 
+
         .marquee {
             position: relative;
             white-space: nowrap;
             animation: scroll 30s linear infinite;
         }
- 
+
         .podcast {
             display: inline-block;
             margin: 0 20px;
@@ -49,36 +58,43 @@
             text-align: center;
             transition: transform 0.3s ease;
         }
- 
+
         .podcast a {
             color: white;
-            /* Ensures text color is white */
             text-decoration: none;
-            /* No underline */
             display: block;
-            /* Makes the link fill the div */
         }
- 
+
         .podcast:hover {
             transform: scale(1.05);
-            /* Scales up the div slightly on hover */
             cursor: pointer;
         }
- 
+
         .podcast h2 {
             font-size: 20px;
             margin-top: 0;
         }
- 
+
         .podcast p {
             margin: 5px 0;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-family: monospace;
+            text-align: center;
+            color: white;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        }
     </style>
 </head>
- 
 <body>
     <div>
         <h1>Dark</h1>
+        <p class="subheader">We make podcasts for niche audiences</p>
         <div class="marquee">
             <div class="podcast">
                 <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3">
@@ -90,7 +106,7 @@
             </div>
             <div class="podcast">
                 <a href="https://darkpodcasting.com">
-                    <h2>Smelter: A tale of blood <br>and silicon</h2>
+                    <h2>Smelter: A tale of blood<br>and silicon</h2>
                     <p>Date: ?, 2024</p>
                     <p>Audience Size: ?</p>
                     <p>Total Streams: ?</p>
@@ -98,6 +114,8 @@
             </div>
         </div>
     </div>
+    <footer>
+        © 2024 Dark. All Rights Reserved.
+    </footer>
 </body>
- 
 </html>
