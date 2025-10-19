@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,222 +16,214 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: white;
-            font-family: 'Inter', monospace;
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.4;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            border-bottom: 1px solid #00ff00;
+            padding: 20px;
             text-align: center;
-            padding: 60px 0 40px;
+            z-index: 100;
         }
 
         h1 {
-            font-size: clamp(36px, 8vw, 72px);
-            font-weight: 600;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #ffffff, #cccccc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(24px, 6vw, 48px);
+            font-weight: 400;
+            margin-bottom: 5px;
+            color: #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .subheader {
-            font-family: 'Jersey 10 Charted', sans-serif;
-            font-size: clamp(18px, 4vw, 28px);
-            color: #cfcfcf;
-            margin-bottom: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(12px, 3vw, 16px);
+            color: #888888;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+            padding: 120px 20px 80px;
+            overflow-y: auto;
         }
 
         .podcasts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-            padding: 0 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .podcast-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            background-color: #111111;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            text-align: left;
+            transition: all 0.2s ease;
         }
 
         .podcast-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background-color: #001100;
+            border-color: #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
         }
 
         .podcast-card h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #00ff00;
+            text-transform: uppercase;
         }
 
         .podcast-card .website-link {
-            display: inline-block;
-            color: #4c9aff;
+            display: block;
+            color: #888888;
             text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 20px;
-            padding: 8px 16px;
-            border: 1px solid #4c9aff;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            font-size: 12px;
+            margin-bottom: 15px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .podcast-card .website-link:hover {
-            background: #4c9aff;
-            color: white;
+            color: #00ff00;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .social-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
+            width: 24px;
+            height: 24px;
+            color: #888888;
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 18px;
+            transition: all 0.2s ease;
         }
 
         .social-link:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.2);
+            color: #00ff00;
         }
 
-        .social-link.spotify:hover {
-            background: #1DB954;
-        }
-
-        .social-link.instagram:hover {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        }
-
-        .social-link.youtube:hover {
-            background: #FF0000;
+        .social-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         .jobs-section {
             text-align: center;
-            margin: 60px 0 40px;
+            margin: 40px 0 20px;
         }
 
         .jobs-link {
             display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #4c9aff, #0066cc);
-            color: white;
+            padding: 10px 20px;
+            background-color: #111111;
+            color: #00ff00;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(76, 154, 255, 0.3);
+            border: 1px solid #00ff00;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 14px;
         }
 
         .jobs-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 154, 255, 0.4);
+            background-color: #001100;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
         }
 
         footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            border-top: 1px solid #00ff00;
+            padding: 15px;
             text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 60px;
-            color: #888;
-            font-size: 14px;
+            color: #888888;
+            font-size: 12px;
+            z-index: 100;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            header {
-                padding: 40px 0 30px;
+            main {
+                padding: 100px 15px 70px;
             }
 
             .podcasts-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 10px;
+                gap: 15px;
             }
 
             .podcast-card {
-                padding: 25px 20px;
+                padding: 15px;
             }
 
-            .social-links {
-                gap: 12px;
+            header {
+                padding: 15px;
             }
 
-            .social-link {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
+            footer {
+                padding: 10px;
             }
         }
 
         @media (max-width: 480px) {
-            .podcast-card {
-                padding: 20px 15px;
-            }
-
             .podcast-card h2 {
-                font-size: 20px;
+                font-size: 16px;
             }
 
             .jobs-link {
-                padding: 12px 24px;
-                font-size: 14px;
+                padding: 8px 16px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Dark</h1>
-            <p class="subheader">We make podcasts for niche audiences</p>
-        </header>
+    <header>
+        <h1>Dark</h1>
+        <p class="subheader">We make podcasts for niche audiences</p>
+    </header>
 
+    <main>
         <div class="podcasts-grid">
             <div class="podcast-card">
                 <h2>The Capital Archive</h2>
                 <a href="https://thecapitalarchive.org" class="website-link" target="_blank">thecapitalarchive.org</a>
                 <div class="social-links">
-                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">♪</a>
-                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
-                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                 </div>
             </div>
 
@@ -239,9 +231,15 @@
                 <h2>Fabulas De Machina</h2>
                 <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3" class="website-link" target="_blank">Listen on Spotify</a>
                 <div class="social-links">
-                    <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3" class="social-link spotify" title="Spotify" target="_blank">♪</a>
-                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
-                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                    <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3" class="social-link spotify" title="Spotify" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                 </div>
             </div>
 
@@ -249,9 +247,15 @@
                 <h2>The Ashen Archives</h2>
                 <a href="https://theashenarchives.com" class="website-link" target="_blank">theashenarchives.com</a>
                 <div class="social-links">
-                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">♪</a>
-                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
-                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -259,7 +263,7 @@
         <div class="jobs-section">
             <a href="jobs.html" class="jobs-link">Jobs at Dark</a>
         </div>
-    </div>
+    </main>
 
     <footer>
         © 2025 Dark. All Rights Reserved.
