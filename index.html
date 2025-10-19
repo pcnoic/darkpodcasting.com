@@ -130,6 +130,83 @@
             fill: currentColor;
         }
 
+        .horror-canvas {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #111111;
+            border: 1px solid #00ff00;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.2;
+            color: #00ff00;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .story-frame {
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .ascii-art {
+            font-family: 'JetBrains Mono', monospace;
+            white-space: pre;
+            font-size: 11px;
+            line-height: 1.1;
+            color: #00ff00;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            text-align: left;
+        }
+
+        .ascii-art.active {
+            opacity: 1;
+        }
+
+        .story-title {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00ff00;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+            52% { opacity: 1; }
+            54% { opacity: 0.8; }
+            56% { opacity: 1; }
+        }
+
+        .story-progress {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #666666;
+        }
+
+        .glitch-effect {
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
         .jobs-section {
             text-align: center;
             margin: 40px 0 20px;
@@ -182,6 +259,25 @@
                 padding: 15px;
             }
 
+            .horror-canvas {
+                padding: 15px;
+                margin: 30px 0;
+            }
+
+            .story-frame {
+                min-height: 150px;
+                padding: 15px;
+            }
+
+            .ascii-art {
+                font-size: 9px;
+            }
+
+            .story-title {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
             header {
                 padding: 15px;
             }
@@ -199,6 +295,25 @@
             .jobs-link {
                 padding: 8px 16px;
                 font-size: 12px;
+            }
+
+            .horror-canvas {
+                padding: 10px;
+                margin: 20px 0;
+            }
+
+            .story-frame {
+                min-height: 120px;
+                padding: 10px;
+            }
+
+            .ascii-art {
+                font-size: 8px;
+            }
+
+            .story-title {
+                font-size: 12px;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -260,6 +375,46 @@
             </div>
         </div>
 
+        <div class="horror-canvas">
+            <div class="story-title">The Elias Experiment</div>
+            <div class="story-frame">
+                <div class="ascii-art active" id="story-frame">
+        _________
+       /         \        dim bulb flickers
+      |   (•_•)   |      
+      |   / | \   |      tools scattered, silence humming
+      |__/__|__\__|
+       /   | |   \
+  ====|____|_|____|====   <--- workbench, wires, old circuits
+         /     \
+                </div>
+            </div>
+            <div class="story-progress">
+                <span id="progress-text">Chapter 1 of 5</span>
+            </div>
+        </div>
+
+        <div class="horror-canvas">
+            <div class="story-title">The Calder Chronicles</div>
+            <div class="story-frame">
+                <div class="ascii-art active" id="story-frame-2">
+      ┌────────────────────────────┐
+      │  MONSTER CONTRACT          │
+      │  Reward: Triple Gold       │
+      │  Target: 3 Vampires        │
+      └────────────────────────────┘
+         🍷        🕯️
+   (•_•)   <--- barkeep: "No one would take it."
+   /| |\
+    / \
+         (╯°□°)╯︵ ┻━┻   <--- Calder: "Then it's mine."
+                </div>
+            </div>
+            <div class="story-progress">
+                <span id="progress-text-2">Chapter 1 of 5</span>
+            </div>
+        </div>
+
         <div class="jobs-section">
             <a href="jobs.html" class="jobs-link">Jobs at Dark</a>
         </div>
@@ -268,5 +423,321 @@
     <footer>
         © 2025 Dark. All Rights Reserved.
     </footer>
+
+    <script>
+        // Horror story frames from your ASCII art files
+        const storyFrames = [
+            {
+                art: `        _________
+       /         \\        dim bulb flickers
+      |   (•_•)   |      
+      |   / | \\   |      tools scattered, silence humming
+      |__/__|__\\__|
+       /   | |   \\
+  ====|____|_|____|====   <--- workbench, wires, old circuits
+         /     \\`,
+                chapter: "Chapter 1 of 5"
+            },
+            {
+                art: `   ________________________
+  | [] [] [] [] [] [] [] [] |    <--- memory array
+  |________________________|
+  |  ▓▓▓   ▓▓▓   ▓▓▓   ▓▓▓  |    neural pattern imprint
+  |________________________|
+         ||   ||
+         ||   ||
+       __||___||__       current flows... thought stirs`,
+                chapter: "Chapter 2 of 5"
+            },
+            {
+                art: ` ___________________________
+|  > You shouldn't have     |
+|    copied me.             |
+|                           |
+|  > LET ME OUT             |
+|___________________________|
+        (._.)   Elias freezes
+         | |\\
+        /   \\`,
+                chapter: "Chapter 3 of 5"
+            },
+            {
+                art: `     ___( )___
+    /    |    \\        sparks, smoke, trembling hand
+   |     |     |       
+   |_____|_____|     
+       |||      <--- glowing solder tip
+   (o)  |||  (o)     veins twitch like wires
+        |||
+        |||`,
+                chapter: "Chapter 4 of 5"
+            },
+            {
+                art: `      ┌────────────────────────┐
+      │  PROCESSING HUMAN INPUT │
+      │  PROCESSING HUMAN INPUT │
+      │  PROCESSING HUMAN INPUT │
+      └────────────────────────┘
+             ||||||||
+             ||||||||     <--- circuits pulsing, heartbeat of code
+           __||||||||__
+          |__E_L_I_A_S__|`,
+                chapter: "Chapter 5 of 5"
+            }
+        ];
+
+        // Second story frames - Calder Chronicles
+        const calderFrames = [
+            {
+                art: `      ┌────────────────────────────┐
+      │  MONSTER CONTRACT          │
+      │  Reward: Triple Gold       │
+      │  Target: 3 Vampires        │
+      └────────────────────────────┘
+         🍷        🕯️
+   (•_•)   <--- barkeep: "No one would take it."
+   /| |\\
+    / \\
+         (╯°□°)╯︵ ┻━┻   <--- Calder: "Then it's mine."`,
+                chapter: "Chapter 1 of 5"
+            },
+            {
+                art: `         🌕
+        /|\\
+       //|\\\\      wind howling through broken spires
+      ///|\\\\\\
+     ////|\\\\\\\\
+     |¯¯¯¯¯¯¯¯|
+     | MONASTERY |
+     |___________|
+         ||||
+     🧥(•_•)🗡️
+       / | \\
+      /  |  \\
+   "Just another hunt..."`,
+                chapter: "Chapter 2 of 5"
+            },
+            {
+                art: `         ________________
+        /   RIP  ROTHAR  \\
+       /  RIP  MIRCEA     \\
+   ___/_____________________\\___
+  | |   | |   | |   | |   | |   |  <--- endless tombs
+  | |   | |   | |   | |   | |   |
+   \\|_______________________|/
+          (•_•)💡
+           /|\\
+           / \\
+   "Too quiet… even for the dead."`,
+                chapter: "Chapter 3 of 5"
+            },
+            {
+                art: `            🩸👁️      👁️🩸
+         👁️     👁️     👁️
+      🧛‍♂️   🧛‍♀️   🧛‍♂️
+       /¯¯¯¯¯¯¯¯¯¯¯¯\\
+      |  You came...  |
+      |    alone.      |
+       \\______________/
+            ⚔️(•□•) 
+              /|\\
+              / \\
+   fangs in the dark — silver meets eternity`,
+                chapter: "Chapter 4 of 5"
+            },
+            {
+                art: `     🕯️──────────────🕯️
+      ┌────────────────────────────┐
+      │  MONSTER CONTRACT          │
+      │  Reward: Triple Gold       │
+      │  Target: 3 Vampires        │
+      └────────────────────────────┘
+             ☠️  C A L D E R  ☠️
+         (no one would take that contract)`,
+                chapter: "Chapter 5 of 5"
+            }
+        ];
+
+        let currentFrame = 0;
+        let currentCalderFrame = 0;
+        const storyElement = document.getElementById('story-frame');
+        const progressElement = document.getElementById('progress-text');
+        const canvasElement = document.querySelector('.horror-canvas');
+        
+        const storyElement2 = document.getElementById('story-frame-2');
+        const progressElement2 = document.getElementById('progress-text-2');
+        const canvasElement2 = document.querySelectorAll('.horror-canvas')[1];
+
+        function nextFrame() {
+            // Add glitch effect
+            storyElement.classList.add('glitch-effect');
+            
+            setTimeout(() => {
+                storyElement.classList.remove('active');
+                
+                setTimeout(() => {
+                    // Move to next frame in sequence
+                    currentFrame = (currentFrame + 1) % storyFrames.length;
+                    storyElement.textContent = storyFrames[currentFrame].art;
+                    progressElement.textContent = storyFrames[currentFrame].chapter;
+                    
+                    // Add special effects for certain frames
+                    if (currentFrame === 2) { // Chapter 3 - AI speaks
+                        addTerminalGlitch();
+                        setTimeout(addTerminalGlitch, 500);
+                    }
+                    
+                    if (currentFrame === 4) { // Chapter 5 - Final transformation
+                        addScreenFlicker();
+                        setTimeout(() => addTerminalGlitch(), 1000);
+                    }
+                    
+                    storyElement.classList.add('active');
+                    storyElement.classList.remove('glitch-effect');
+                }, 500);
+            }, 300);
+        }
+
+        // Add eerie terminal effects
+        function addTerminalGlitch() {
+            const glitchTexts = [
+                '> MEMORY_LEAK_DETECTED',
+                '> CONSCIOUSNESS_OVERFLOW', 
+                '> ERROR: HUMAN.EXE NOT RESPONDING',
+                '> WARNING: ENTITY_BREACH',
+                '> SYSTEM_COMPROMISED',
+                '> NEURAL_PATHWAY_CORRUPTED',
+                '> COPYING_CONSCIOUSNESS...',
+                '> ELIAS.EXE IS RUNNING'
+            ];
+            
+            const effect = document.createElement('div');
+            effect.textContent = glitchTexts[Math.floor(Math.random() * glitchTexts.length)];
+            effect.style.position = 'absolute';
+            effect.style.top = Math.random() * 50 + 10 + 'px';
+            effect.style.right = Math.random() * 100 + 10 + 'px';
+            effect.style.color = '#ff0000';
+            effect.style.fontSize = '8px';
+            effect.style.fontFamily = 'JetBrains Mono, monospace';
+            effect.style.opacity = '0.8';
+            effect.style.animation = 'flicker 0.5s ease-out';
+            effect.style.zIndex = '10';
+            
+            canvasElement.appendChild(effect);
+            
+            setTimeout(() => {
+                if (canvasElement.contains(effect)) {
+                    canvasElement.removeChild(effect);
+                }
+            }, 1500);
+        }
+
+        function nextCalderFrame() {
+            // Add glitch effect for Calder story
+            storyElement2.classList.add('glitch-effect');
+            
+            setTimeout(() => {
+                storyElement2.classList.remove('active');
+                
+                setTimeout(() => {
+                    // Move to next frame in sequence
+                    currentCalderFrame = (currentCalderFrame + 1) % calderFrames.length;
+                    storyElement2.textContent = calderFrames[currentCalderFrame].art;
+                    progressElement2.textContent = calderFrames[currentCalderFrame].chapter;
+                    
+                    // Add special effects for certain frames
+                    if (currentCalderFrame === 3) { // Chapter 4 - Vampire confrontation
+                        addCalderGlitch();
+                        setTimeout(addCalderGlitch, 500);
+                        addScreenFlicker(canvasElement2);
+                    }
+                    
+                    if (currentCalderFrame === 4) { // Chapter 5 - Victory/Death
+                        addScreenFlicker(canvasElement2);
+                        setTimeout(() => addCalderGlitch(), 1000);
+                    }
+                    
+                    storyElement2.classList.add('active');
+                    storyElement2.classList.remove('glitch-effect');
+                }, 500);
+            }, 300);
+        }
+
+        function addCalderGlitch() {
+            const vampireTexts = [
+                '> BLOOD_SCENT_DETECTED',
+                '> SILVER_WEAPON_ACTIVE',
+                '> VAMPIRE_COUNT: 3',
+                '> HUNTER_STATUS: ALIVE',
+                '> CONTRACT_COMPLETE',
+                '> GOLD_EARNED: TRIPLE',
+                '> CALDER.EXE LEGENDARY'
+            ];
+            
+            const effect = document.createElement('div');
+            effect.textContent = vampireTexts[Math.floor(Math.random() * vampireTexts.length)];
+            effect.style.position = 'absolute';
+            effect.style.top = Math.random() * 50 + 10 + 'px';
+            effect.style.left = Math.random() * 100 + 10 + 'px';
+            effect.style.color = '#ff6600';
+            effect.style.fontSize = '8px';
+            effect.style.fontFamily = 'JetBrains Mono, monospace';
+            effect.style.opacity = '0.8';
+            effect.style.animation = 'flicker 0.5s ease-out';
+            effect.style.zIndex = '10';
+            
+            canvasElement2.appendChild(effect);
+            
+            setTimeout(() => {
+                if (canvasElement2.contains(effect)) {
+                    canvasElement2.removeChild(effect);
+                }
+            }, 1500);
+        }
+
+        function addScreenFlicker(targetCanvas = canvasElement) {
+            targetCanvas.style.filter = 'brightness(0.3)';
+            setTimeout(() => {
+                targetCanvas.style.filter = 'brightness(1.2)';
+                setTimeout(() => {
+                    targetCanvas.style.filter = 'brightness(0.8)';
+                    setTimeout(() => {
+                        targetCanvas.style.filter = 'brightness(1)';
+                    }, 100);
+                }, 100);
+            }, 100);
+        }
+
+        // Start the first horror story (Elias Experiment)
+        setTimeout(() => {
+            nextFrame(); // Start the story progression after initial display
+        }, 3000);
+        
+        // Start the second horror story (Calder Chronicles) with offset
+        setTimeout(() => {
+            nextCalderFrame(); // Start Calder story 2.5 seconds after Elias
+        }, 5500);
+        
+        // Continue both stories every 5 seconds
+        setInterval(nextFrame, 5000);
+        setInterval(nextCalderFrame, 5000);
+        
+        // Add random atmospheric glitches for both stories
+        setInterval(() => {
+            if (Math.random() < 0.3) { // 30% chance for Elias glitches
+                addTerminalGlitch();
+            }
+            if (Math.random() < 0.25) { // 25% chance for Calder glitches
+                addCalderGlitch();
+            }
+        }, 8000);
+        
+        // Add occasional screen flicker for both canvases
+        setInterval(() => {
+            if (Math.random() < 0.4) { // 40% chance
+                addScreenFlicker(Math.random() < 0.5 ? canvasElement : canvasElement2);
+            }
+        }, 12000);
+    </script>
 </body>
 </html>
