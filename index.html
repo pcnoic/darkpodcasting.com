@@ -7,136 +7,262 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: monospace;
+        * {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            font-family: 'Inter', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
         }
 
         h1 {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 5px;
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 600;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subheader {
             font-family: 'Jersey 10 Charted', sans-serif;
+            font-size: clamp(18px, 4vw, 28px);
+            color: #cfcfcf;
+            margin-bottom: 40px;
+        }
+
+        .podcasts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+
+        .podcast-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .podcast-card h2 {
             font-size: 24px;
-            text-align: center;
-            color: #cfcfcf; /* Light gray color for subheader text */
-            margin-bottom: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
         }
 
-        @keyframes scroll {
-            0% {
-                left: 100%;
-            }
-            100% {
-                left: -100%;
-            }
-        }
-
-        .marquee {
-            position: relative;
-            white-space: nowrap;
-            animation: scroll 30s linear infinite;
-        }
-
-        .podcast {
+        .podcast-card .website-link {
             display: inline-block;
-            margin: 0 20px;
-            padding: 10px;
-            width: 300px;
-            text-align: center;
-            transition: transform 0.3s ease;
+            color: #4c9aff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            border: 1px solid #4c9aff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
-        .podcast a {
+        .podcast-card .website-link:hover {
+            background: #4c9aff;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             color: white;
             text-decoration: none;
-            display: block;
-        }
-
-        .podcast:hover {
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-
-        .podcast h2 {
-            font-size: 20px;
-            margin-top: 0;
-        }
-
-        .podcast p {
-            margin: 5px 0;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            font-family: monospace;
-            text-align: center;
-            color: white;
-            padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-        }
-
-        .jobs-link {
-            position: fixed;
-            bottom: 40px;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
+            transition: all 0.3s ease;
             font-size: 18px;
         }
 
-        .jobs-link a {
-            color: #4c9aff;
-            text-decoration: none;
+        .social-link:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .jobs-link a:hover {
-            text-decoration: underline;
+        .social-link.spotify:hover {
+            background: #1DB954;
+        }
+
+        .social-link.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+
+        .social-link.youtube:hover {
+            background: #FF0000;
+        }
+
+        .jobs-section {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .jobs-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #4c9aff, #0066cc);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 154, 255, 0.3);
+        }
+
+        .jobs-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 154, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            header {
+                padding: 40px 0 30px;
+            }
+
+            .podcasts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 10px;
+            }
+
+            .podcast-card {
+                padding: 25px 20px;
+            }
+
+            .social-links {
+                gap: 12px;
+            }
+
+            .social-link {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .podcast-card {
+                padding: 20px 15px;
+            }
+
+            .podcast-card h2 {
+                font-size: 20px;
+            }
+
+            .jobs-link {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Dark</h1>
-        <p class="subheader">We make podcasts for niche audiences</p>
-        <div class="marquee">
-            <div class="podcast">
-                <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3">
-                    <h2>Fabulas De Machina</h2>
-                    <p>Date: November 1, 2020</p>
-                    <p>Audience Size: 10,237</p>
-                    <p>Total Streams: 1,324,141</p>
-                </a>
+    <div class="container">
+        <header>
+            <h1>Dark</h1>
+            <p class="subheader">We make podcasts for niche audiences</p>
+        </header>
+
+        <div class="podcasts-grid">
+            <div class="podcast-card">
+                <h2>The Capital Archive</h2>
+                <a href="https://thecapitalarchive.org" class="website-link" target="_blank">thecapitalarchive.org</a>
+                <div class="social-links">
+                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">♪</a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                </div>
             </div>
-            <div class="podcast">
-                <a href="https://darkpodcasting.com">
-                    <h2>Smelter: A tale of blood<br>and silicon</h2>
-                    <p>Date: ?, 2024</p>
-                    <p>Audience Size: ?</p>
-                    <p>Total Streams: ?</p>
-                </a>
+
+            <div class="podcast-card">
+                <h2>Fabulas De Machina</h2>
+                <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3" class="website-link" target="_blank">Listen on Spotify</a>
+                <div class="social-links">
+                    <a href="https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3" class="social-link spotify" title="Spotify" target="_blank">♪</a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                </div>
+            </div>
+
+            <div class="podcast-card">
+                <h2>The Ashen Archives</h2>
+                <a href="https://theashenarchives.com" class="website-link" target="_blank">theashenarchives.com</a>
+                <div class="social-links">
+                    <a href="#" class="social-link spotify" title="Spotify" target="_blank">♪</a>
+                    <a href="#" class="social-link instagram" title="Instagram" target="_blank">📷</a>
+                    <a href="#" class="social-link youtube" title="YouTube" target="_blank">▶</a>
+                </div>
             </div>
         </div>
+
+        <div class="jobs-section">
+            <a href="jobs.html" class="jobs-link">Jobs at Dark</a>
+        </div>
     </div>
-    <div class="jobs-link">
-        <a href="jobs.html">Jobs at Dark</a>
-    </div>
+
     <footer>
-        © 2024 Dark. All Rights Reserved.
+        © 2025 Dark. All Rights Reserved.
     </footer>
 </body>
 </html>

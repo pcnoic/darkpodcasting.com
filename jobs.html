@@ -5,106 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Opportunities | Dark Studios</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: monospace;
+        * {
             margin: 0;
-            padding: 20px;
-            height: 100%;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .jobs-section {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #555; /* subtle border */
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #4c9aff;
+            text-decoration: none;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            border: 1px solid #4c9aff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            background: #4c9aff;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #cfcfcf;
+            margin-bottom: 40px;
         }
 
         .job-item {
-            background-color: #222;
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .job-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .job-item-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            gap: 20px;
         }
 
         .job-item-title {
-            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
         }
 
-        .job-item-subtitle {
-            font-size: 0.8em;
-            color: #aaa;
+        .job-item-description {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
 
-        .job-item-description, .job-item-qualifications, ul {
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-
-        a {
+        .job-item-qualifications {
+            font-size: 14px;
+            font-weight: 600;
             color: #4c9aff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .w-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .w-button:hover {
-            background-color: #555;
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        ul li:before {
+            content: "•";
+            color: #4c9aff;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .email-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #4c9aff, #0066cc);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 154, 255, 0.3);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 154, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+
+            .job-item {
+                padding: 25px 20px;
+            }
+
+            .job-item-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .job-item-title {
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            .email-button {
+                align-self: flex-start;
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 10px;
+            }
+
+            .job-item {
+                padding: 20px 15px;
+            }
+
+            .job-item-title {
+                font-size: 20px;
+            }
+
+            .job-item-description {
+                font-size: 15px;
+            }
+
+            ul li {
+                font-size: 14px;
+                padding-left: 20px;
+            }
         }
     </style>
 </head>
 <body>
-<div class="jobs-section">
-    <div class="default-wrapper">
-        <h1>Open Positions</h1>
-        <div class="open-positions-description">
-            All positions are remote
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Open Positions</h1>
+            <p class="subtitle">All positions are remote</p>
         </div>
+
         <div class="job-item">
             <div class="job-item-header">
-                <h3 class="job-item-title">Music Producer/Composer</h3>
-                <a href="mailto:christos@darkpodcasting.com" class="w-button">Email Us</a>
+                <div>
+                    <h3 class="job-item-title">Music Producer/Composer</h3>
+                </div>
+                <a href="mailto:christos@darkpodcasting.com" class="email-button">Email Us</a>
             </div>
             <div class="job-item-description">
                 Looking for a talented music producer or composer to write our newest podcast's soundtrack and episode themes.
             </div>
-            <div class="job-item-qualifications">RESPONSIBILITIES</div>
+            <div class="job-item-qualifications">Responsibilities</div>
             <ul>
                 <li>Compose and produce a captivating theme song that aligns with the podcast's tone and audience</li>
                 <li>Collaborate with the podcast team to understand and implement specific musical directions</li>
                 <li>Deliver high-quality music production that sets the stage for each episode</li>
             </ul>
         </div>
+
         <div class="job-item">
             <div class="job-item-header">
-                <h3 class="job-item-title">Podcast Editor</h3>
-                <a href="mailto:christos@darkpodcasting.com" class="w-button">Email Us</a>
+                <div>
+                    <h3 class="job-item-title">Podcast Editor</h3>
+                </div>
+                <a href="mailto:christos@darkpodcasting.com" class="email-button">Email Us</a>
             </div>
             <div class="job-item-description">
                 We're hiring for a podcast editor to help with the production of a new podcast.
             </div>
-            <div class="job-item-qualifications">RESPONSIBILITIES</div>
+            <div class="job-item-qualifications">Responsibilities</div>
             <ul>
                 <li>Compile and edit audio files</li>
                 <li>Enhance audio quality to ensure clear, deep and warm sound</li>
@@ -114,6 +265,9 @@
             </ul>
         </div>
     </div>
-</div>
+
+    <footer>
+        © 2025 Dark. All Rights Reserved.
+    </footer>
 </body>
 </html>
