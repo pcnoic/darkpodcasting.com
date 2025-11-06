@@ -2,8 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
     <title>Dark - we make podcasts for real people</title>
+    <meta name="description" content="Dark creates immersive podcasts for niche audiences. Discover The Capital Archive, Fabulas De Machina, and The Ashen Archives - horror and storytelling podcasts that push creative boundaries.">
+    <meta name="keywords" content="podcasts, horror podcasts, storytelling, audio drama, The Capital Archive, Fabulas De Machina, The Ashen Archives, dark fiction, immersive audio">
+    <meta name="author" content="Dark Studios">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darkpodcasting.com/">
+    <meta property="og:title" content="Dark - we make podcasts for real people">
+    <meta property="og:description" content="Dark creates immersive podcasts for niche audiences. Discover horror and storytelling podcasts that push creative boundaries.">
+    <meta property="og:image" content="https://darkpodcasting.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Dark Studios">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://darkpodcasting.com/">
+    <meta property="twitter:title" content="Dark - we make podcasts for real people">
+    <meta property="twitter:description" content="Dark creates immersive podcasts for niche audiences. Discover horror and storytelling podcasts that push creative boundaries.">
+    <meta property="twitter:image" content="https://darkpodcasting.com/images/twitter-card.jpg">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://darkpodcasting.com/">
+    <meta name="format-detection" content="telephone=no">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +74,7 @@
         .subheader {
             font-family: 'JetBrains Mono', monospace;
             font-size: clamp(12px, 3vw, 16px);
-            color: #888888;
+            color: #b3b3b3;
             margin: 0;
         }
 
@@ -92,7 +116,7 @@
 
         .podcast-card .website-link {
             display: block;
-            color: #888888;
+            color: #b3b3b3;
             text-decoration: none;
             font-size: 12px;
             margin-bottom: 15px;
@@ -113,11 +137,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
-            color: #888888;
+            width: 44px;
+            height: 44px;
+            color: #b3b3b3;
             text-decoration: none;
             transition: all 0.2s ease;
+            border-radius: 4px;
         }
 
         .social-link:hover {
@@ -125,8 +150,8 @@
         }
 
         .social-link svg {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
 
@@ -156,7 +181,7 @@
         .ascii-art {
             font-family: 'JetBrains Mono', monospace;
             white-space: pre;
-            font-size: 11px;
+            font-size: 12px;
             line-height: 1.1;
             color: #00ff00;
             opacity: 0;
@@ -190,8 +215,8 @@
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 10px;
-            color: #666666;
+            font-size: 12px;
+            color: #999999;
         }
 
         .glitch-effect {
@@ -214,7 +239,7 @@
 
         .jobs-link {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background-color: #111111;
             color: #00ff00;
             text-decoration: none;
@@ -223,6 +248,9 @@
             transition: all 0.2s ease;
             text-transform: uppercase;
             font-size: 14px;
+            min-height: 44px;
+            min-width: 44px;
+            border-radius: 4px;
         }
 
         .jobs-link:hover {
@@ -239,7 +267,7 @@
             border-top: 1px solid #00ff00;
             padding: 15px;
             text-align: center;
-            color: #888888;
+            color: #b3b3b3;
             font-size: 12px;
             z-index: 100;
         }
@@ -270,7 +298,7 @@
             }
 
             .ascii-art {
-                font-size: 9px;
+                font-size: 12px;
             }
 
             .story-title {
@@ -308,7 +336,7 @@
             }
 
             .ascii-art {
-                font-size: 8px;
+                font-size: 12px;
             }
 
             .story-title {
@@ -617,7 +645,7 @@
             effect.style.top = Math.random() * 50 + 10 + 'px';
             effect.style.right = Math.random() * 100 + 10 + 'px';
             effect.style.color = '#ff0000';
-            effect.style.fontSize = '8px';
+            effect.style.fontSize = '12px';
             effect.style.fontFamily = 'JetBrains Mono, monospace';
             effect.style.opacity = '0.8';
             effect.style.animation = 'flicker 0.5s ease-out';
@@ -680,7 +708,7 @@
             effect.style.top = Math.random() * 50 + 10 + 'px';
             effect.style.left = Math.random() * 100 + 10 + 'px';
             effect.style.color = '#ff6600';
-            effect.style.fontSize = '8px';
+            effect.style.fontSize = '12px';
             effect.style.fontFamily = 'JetBrains Mono, monospace';
             effect.style.opacity = '0.8';
             effect.style.animation = 'flicker 0.5s ease-out';
@@ -738,6 +766,62 @@
                 addScreenFlicker(Math.random() < 0.5 ? canvasElement : canvasElement2);
             }
         }, 12000);
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dark Studios",
+        "url": "https://darkpodcasting.com",
+        "logo": "https://darkpodcasting.com/images/logo.png",
+        "description": "Dark creates immersive podcasts for niche audiences. Discover horror and storytelling podcasts that push creative boundaries.",
+        "sameAs": [
+            "https://open.spotify.com/show/5Q3fVsgKXBPgIB78GaBGm3"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "christos@darkpodcasting.com",
+            "contactType": "customer service"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Podcast Collection",
+            "itemListElement": [
+                {
+                    "@type": "CreativeWork",
+                    "name": "The Capital Archive",
+                    "description": "Horror podcast series",
+                    "url": "https://thecapitalarchive.org",
+                    "creator": {
+                        "@type": "Organization",
+                        "name": "Dark Studios"
+                    }
+                },
+                {
+                    "@type": "CreativeWork",
+                    "name": "Fabulas De Machina",
+                    "description": "Storytelling podcast series",
+                    "url": "https://fabulasdemachina.com",
+                    "creator": {
+                        "@type": "Organization",
+                        "name": "Dark Studios"
+                    }
+                },
+                {
+                    "@type": "CreativeWork",
+                    "name": "The Ashen Archives",
+                    "description": "Dark fiction podcast series",
+                    "url": "https://theashenarchives.com",
+                    "creator": {
+                        "@type": "Organization",
+                        "name": "Dark Studios"
+                    }
+                }
+            ]
+        }
+    }
     </script>
 </body>
 </html>
