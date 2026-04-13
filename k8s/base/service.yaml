@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: darkpodcasting-server
+  labels:
+    app: darkpodcasting-server
+    app.kubernetes.io/name: darkpodcasting-server
+    app.kubernetes.io/component: backend
+spec:
+  selector:
+    app: darkpodcasting-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP

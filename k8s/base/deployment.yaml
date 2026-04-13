@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: darkpodcasting-server
+  labels:
+    app: darkpodcasting-server
+    app.kubernetes.io/name: darkpodcasting-server
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: darkpodcasting-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: darkpodcasting-server
+        app.kubernetes.io/name: darkpodcasting-server
+        app.kubernetes.io/component: backend
+    spec:
+      tolerations:
+        - key: node.kubernetes.io/network-unavailable
+          operator: Exists
+          effect: NoSchedule
+        - key: node.kubernetes.io/network-unavailable
+          operator: Exists
+          effect: NoExecute
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: server
+          image: server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "0.5"
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 3
+      terminationGracePeriodSeconds: 60
