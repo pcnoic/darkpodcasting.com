@@ -76,38 +76,36 @@
 
 ## Traceability
 
-Populated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | — | Pending |
-| FOUND-02 | — | Pending |
-| FOUND-03 | — | Pending |
-| FOUND-04 | — | Pending |
-| BRAND-01 | — | Pending |
-| BRAND-02 | — | Pending |
-| BRAND-03 | — | Pending |
-| SHOW-01 | — | Pending |
-| SHOW-02 | — | Pending |
-| SHOW-03 | — | Pending |
-| SHOW-04 | — | Pending |
-| SHOW-05 | — | Pending |
-| HOME-01 | — | Pending |
-| HOME-02 | — | Pending |
-| HOME-03 | — | Pending |
-| ABOUT-01 | — | Pending |
-| ABOUT-02 | — | Pending |
-| ABOUT-03 | — | Pending |
-| ABOUT-04 | — | Pending |
-| ANIM-01 | — | Pending |
-| ANIM-02 | — | Pending |
-| ANIM-03 | — | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| BRAND-03 | Phase 1 | Pending |
+| SHOW-01 | Phase 2 | Pending |
+| SHOW-02 | Phase 2 | Pending |
+| SHOW-03 | Phase 2 | Pending |
+| SHOW-04 | Phase 2 | Pending |
+| SHOW-05 | Phase 2 | Pending |
+| HOME-01 | Phase 3 | Pending |
+| HOME-02 | Phase 3 | Pending |
+| HOME-03 | Phase 3 | Pending |
+| ABOUT-01 | Phase 3 | Pending |
+| ABOUT-02 | Phase 3 | Pending |
+| ABOUT-03 | Phase 3 | Pending |
+| ABOUT-04 | Phase 3 | Pending |
+| BRAND-01 | Phase 3 | Pending |
+| ANIM-01 | Phase 4 | Pending |
+| ANIM-02 | Phase 4 | Pending |
+| ANIM-03 | Phase 4 | Pending |
+| BRAND-02 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
-- Mapped to phases: 0 (pending roadmap creation)
-- Unmapped: 22 ⚠️ (normal at this stage)
+- Mapped to phases: 22
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-13*
-*Last updated: 2026-04-13 after initial definition*
+*Last updated: 2026-04-13 — traceability populated after roadmap creation*
