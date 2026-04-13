@@ -76,6 +76,11 @@ jobs:
           chmod 600 /tmp/kubeconfig
           echo "KUBECONFIG=/tmp/kubeconfig" >> "$GITHUB_ENV"
 
+      - name: Ensure namespace exists
+        run: |
+          kubectl create namespace darkpodcasting \
+            --dry-run=client -o yaml | kubectl apply -f -
+
       - name: Deploy application
         working-directory: k8s/overlays/production
         run: |
